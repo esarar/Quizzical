@@ -18,7 +18,7 @@ function Answers({ quest, answersClick }) {
           onClick={() => answersClick(quest.id, incorrect)}
           value={incorrect}
         >
-          {incorrect}
+          {decode(incorrect)}
         </button>
       );
     }
@@ -35,7 +35,7 @@ function Answers({ quest, answersClick }) {
       onClick={() => answersClick(quest.id, quest.correct_answer)}
       value={quest.correct_answer}
     >
-      {quest.correct_answer}
+      {decode(quest.correct_answer)}
     </button>
   );
 
@@ -66,7 +66,7 @@ function Answers({ quest, answersClick }) {
     // eslint-disable-next-line
   }, [quest]);
 
-  return <div className="quiz--answers">{decode(allAnswers)}</div>;
+  return <div className="quiz--answers">{allAnswers}</div>;
 }
 
 export default Answers;
