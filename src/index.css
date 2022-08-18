@@ -11,6 +11,8 @@ body {
   background-position: center center;
   background-size: cover;
   background-attachment: fixed;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 main {
@@ -18,14 +20,15 @@ main {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 100vh;
 }
 
 .container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   text-align: center;
+  height: 100vh;
 }
 
 .quiz--title {
@@ -101,7 +104,7 @@ main {
 
 .custom-select {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   text-align: center;
   font-family: "Inter", sans-serif;
   font-family: "Teko", sans-serif;
@@ -153,8 +156,9 @@ main {
 .quiz--questions {
   font-family: "Inter", sans-serif;
   font-family: "Teko", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  margin: 40px;
   color: rgb(32, 16, 16);
 }
 
@@ -364,7 +368,9 @@ main {
 
 .quiz--answers button {
   height: 5px;
-  margin: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 20px;
   align-items: center;
   border-radius: 5px;
   box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
