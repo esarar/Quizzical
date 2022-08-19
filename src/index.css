@@ -269,7 +269,9 @@ main {
 
 .selected--answer {
   height: 5px;
-  margin: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 15px;
   align-items: center;
   border-radius: 5px;
   background-color: rgb(190, 184, 184);
@@ -302,7 +304,9 @@ main {
 
 .incorrect--answer {
   height: 5px;
-  margin: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 15px;
   align-items: center;
   border-radius: 5px;
   background-color: #d67f7f;
@@ -335,7 +339,9 @@ main {
 
 .correct--answer {
   height: 5px;
-  margin: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 15px;
   align-items: center;
   border-radius: 5px;
   background-color: rgb(134, 214, 148);
@@ -370,7 +376,7 @@ main {
   height: 5px;
   margin-left: 8px;
   margin-right: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   align-items: center;
   border-radius: 5px;
   box-shadow: transparent 0 0 0 3px, rgba(18, 18, 18, 0.1) 0 6px 20px;
