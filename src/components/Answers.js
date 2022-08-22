@@ -5,41 +5,18 @@ import { decode } from "html-entities";
 function Answers({ quest, answersClick }) {
   const [allAnswers, setAllAnswers] = React.useState([]);
 
-  const incorrectAnswer = Array.from(quest.incorrect_answers).map(
-    (incorrect) => {
-      return (
-        <button
-          key={nanoid()}
-          className={`${
-            quest.showCorrectAnswer
-              ? quest.selectedAnswer === incorrect && "incorrect--answer"
-              : quest.selectedAnswer === incorrect && "selected--answer"
-          }`}
-          onClick={() => answersClick(quest.id, incorrect)}
-          value={incorrect}
-        >
-          {decode(incorrect)}
-        </button>
-      );
-    }
-  );
+  const incorrectAnswer = quest.incorrect_answers;
 
-  const correctAnswer = (
-    <button
-      key={nanoid()}
-      className={`${
-        quest.showCorrectAnswer
-          ? "correct--answer"
-          : quest.selectedAnswer === quest.correct_answer && "selected--answer"
-      }`}
-      onClick={() => answersClick(quest.id, quest.correct_answer)}
-      value={quest.correct_answer}
-    >
-      {decode(quest.correct_answer)}
-    </button>
-  );
+  const correctAnswer = quest.correct_answer;
 
   incorrectAnswer.push(correctAnswer);
+
+  let uniqueChars = [];
+  incorrectAnswer.forEach((c) => {
+    if (!uniqueChars.includes(c)) {
+      uniqueChars.push(c);
+    }
+  });
 
   // Yates Shuffle
   function shuffle(array) {
@@ -48,7 +25,7 @@ function Answers({ quest, answersClick }) {
       randomIndex;
 
     while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * 0);
+      randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
 
       temporaryValue = array[currentIndex];
@@ -59,14 +36,33 @@ function Answers({ quest, answersClick }) {
     return array;
   }
 
-  shuffle(incorrectAnswer);
-
   React.useEffect(() => {
-    setAllAnswers(incorrectAnswer);
+    setAllAnswers(shuffle(uniqueChars));
     // eslint-disable-next-line
-  }, [quest]);
+  }, []);
 
-  return <div className="quiz--answers">{allAnswers}</div>;
+  const newAnswers = Array.from(allAnswers).map((ans) => {
+    return (
+      <button
+        key={nanoid()}
+        className={`${
+          quest.showCorrectAnswer
+            ? (quest.selectedAnswer === quest.correct_answer &&
+                quest.selectedAnswer === ans &&
+                "correct--answer") ||
+              (quest.selectedAnswer === ans && "incorrect--answer") ||
+              (quest.correct_answer === ans && "correct--answer")
+            : quest.selectedAnswer === ans && "selected--answer"
+        }`}
+        onClick={() => answersClick(quest.id, ans)}
+        value={ans}
+      >
+        {decode(ans)}
+      </button>
+    );
+  });
+
+  return <div className="quiz--answers">{newAnswers}</div>;
 }
 
 export default Answers;
