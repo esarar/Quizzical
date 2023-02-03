@@ -4,3 +4,5 @@ A quiz game that gets questions by [Open Trivia DB](https://opentdb.com/). Also 
 
 
 This idea is from [Bob Ziroll's scrimba course](https://scrimba.com/learn/learnreact) and it was final project and **I MADE IT** :muscle:
+
+Here is the link of the app https://quizzical-hkqa.onrender.com/
