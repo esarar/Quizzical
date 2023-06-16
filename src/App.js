@@ -146,7 +146,7 @@ function App() {
         <section className="quiz--page">
           {quizComponents}
           <div className="button--container">
-            {!isShow && (
+            {!isShow && newGame && (
               <button className="showanswer--button" onClick={showAnswerClick}>
                 FINISH
               </button>
