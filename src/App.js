@@ -33,7 +33,7 @@ function App() {
           return {
             ...quest,
             id: nanoid(),
-            selectedAnswer: "",
+            selectedAnswer: null,
             showCorrectAnswer: false,
           };
         })
@@ -60,7 +60,7 @@ function App() {
   React.useEffect(() => {
     const allIsAnswered = () => {
       const isAnswered = Array.from(questions).every(
-        (quest) => quest.selectedAnswer !== ""
+        (quest) => quest.selectedAnswer !== null
       );
 
       if (isAnswered) {
