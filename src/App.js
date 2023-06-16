@@ -63,7 +63,9 @@ function App() {
         (quest) => quest.selectedAnswer !== null
       );
 
-      if (isAnswered) {
+      if (!isAnswered) {
+        setNewGame(false);
+      } else if (isAnswered) {
         setNewGame((prevGame) => !prevGame);
       }
     };
@@ -146,7 +148,7 @@ function App() {
         <section className="quiz--page">
           {quizComponents}
           <div className="button--container">
-            {!isShow && newGame && (
+            {!isShow && (
               <button className="showanswer--button" onClick={showAnswerClick}>
                 FINISH
               </button>
